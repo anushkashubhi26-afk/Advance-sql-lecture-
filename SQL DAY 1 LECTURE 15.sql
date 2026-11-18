@@ -1,0 +1,39 @@
+-- THE CASE OF ITC AND ITS SALES--
+--Create A EXCEL DATASHEET CONTAINING A COLOUMN NAME, DISTRIBUTOR ID, NAME, CITY, REGION, PHONE 
+-- TABLE OF DISTRIBUTIONS--
+CREATE TABLE distributors (
+distributors_id INTEGER PRIMARY KEY,
+name TEXT NOT NULL,
+city TEXT,
+region TEXT,
+phone TEXT
+  );
+  --Dropping the table--
+  DROP TABLE distributors;
+  ---- DROPPING THE TABLE --
+ DROP TABLE distributors;
+ 
+ -- CREATE A TABLE WITH A NAME PRODUCTS CONTAINING PRODUCT ID, PRODUCT NAME, BRAND, CATEGORY, PRICE & STOCK --
+ CREATE TABLE PRODUCT(
+ product_id INTEGER PRIMARY KEY,
+ product_name TEXT NOT NULL UNIQUE,
+ brand TEXT,
+ category TEXT NOT NULL,
+ price REAL CHECK (price>0),
+ stock INTEGER DEFAULT 0
+ );
+ --CREATE A TABLE CONTAINING NAME SALE AND SHOULD HAVE COLOUMN , NAME, SALES ID , PRODUCT ID, DISTRIBUTOR ID, SALES DATE, QUANTITY AND AMOUNT --
+ CREATE TABLE SALES(
+ sales_id INTEGER PRIMARY KEY,
+ product_id INTEGER,
+ distributor_id INTEGER,
+ sales_date TEXT,
+ quantity INTEGER CHECK(quantity>0),
+ amount REAL,
+ FOREIGN KEY (product_id) REFERENCES products(product_id),
+ FOREIGN KEY (distributor_id) REFERENCES distributors(distributors_id)
+ );
+ 
+ 
+--CHECKING THE COLOUMN--
+PRAGMA table_info(sales);
